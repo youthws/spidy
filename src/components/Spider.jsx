@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { LoopOnce } from "three";
 
+const MODEL_PATH = `${import.meta.env.BASE_URL}models/spiderman.glb`;
+
 export default function Spider() {
   // Load the actual GLB
-  const { scene, animations } = useGLTF("/models/spiderman.glb");
+  const { scene, animations } = useGLTF(MODEL_PATH);
 
   const { actions } = useAnimations(animations, scene);
 
@@ -37,19 +39,10 @@ export default function Spider() {
       return;
     }
 
-    // Start from beginning
     action.reset();
-
-    // Animation speed
     action.timeScale = speed;
-
-    // Play only once
     action.setLoop(LoopOnce, 1);
-
-    // Stay at final frame
     action.clampWhenFinished = true;
-
-    // Start animation
     action.play();
 
     return () => {
@@ -129,5 +122,4 @@ export default function Spider() {
 }
 
 // Preload separately
-useGLTF.preload("/models/spiderman.glb");
-
+useGLTF.preload(MODEL_PATH);

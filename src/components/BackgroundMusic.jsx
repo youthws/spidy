@@ -1,5 +1,8 @@
+
 import { useEffect, useRef } from "react";
 import { useExperience } from "./ExperienceContext";
+
+const AUDIO_PATH = `${import.meta.env.BASE_URL}audio/background.mp3`;
 
 export default function BackgroundMusic() {
   const { section } = useExperience();
@@ -74,7 +77,7 @@ export default function BackgroundMusic() {
   return (
     <audio
       ref={audioRef}
-      src="/audio/background.mp3"
+      src={AUDIO_PATH}
       loop
       preload="auto"
       volume={0.5}

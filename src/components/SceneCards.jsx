@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { useExperience } from "./ExperienceContext";
 import "./SceneCards.css";
 
+const ASSET_PATH = (path) =>
+  `${import.meta.env.BASE_URL}${path}`;
+
 export default function SceneCards() {
   const { section } = useExperience();
 
@@ -21,9 +24,9 @@ export default function SceneCards() {
       title: "Tobey Maguire",
       description:
         "With great power comes great responsibility.",
-      video: "/videos/scene-1.mp4",
-      audio: "/audio/scene-1.mp3",
-      thumbnail: "/images/scene-1.jpg",
+      video: ASSET_PATH("videos/scene-1.mp4"),
+      audio: ASSET_PATH("audio/scene-1.mp3"),
+      thumbnail: ASSET_PATH("images/scene-1.jpg"),
     },
 
     {
@@ -31,9 +34,9 @@ export default function SceneCards() {
       title: "Andrew Garfield",
       description:
         "You are Spider-Man, and I love you guys!",
-      video: "/videos/scene-2.mp4",
-      audio: "/audio/scene-2.mp3",
-      thumbnail: "/images/scene-2.jpg",
+      video: ASSET_PATH("videos/scene-2.mp4"),
+      audio: ASSET_PATH("audio/scene-2.mp3"),
+      thumbnail: ASSET_PATH("images/scene-2.jpg"),
     },
 
     {
@@ -41,9 +44,9 @@ export default function SceneCards() {
       title: "Tom Holland",
       description:
         "If you're nothing without this suit, then you shouldn't have it.",
-      video: "/videos/scene-3.mp4",
-      audio: "/audio/scene-3.mp3",
-      thumbnail: "/images/scene-3.jpg",
+      video: ASSET_PATH("videos/scene-3.mp4"),
+      audio: ASSET_PATH("audio/scene-3.mp3"),
+      thumbnail: ASSET_PATH("images/scene-3.jpg"),
     },
   ];
 

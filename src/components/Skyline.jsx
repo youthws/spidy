@@ -1,8 +1,10 @@
 
 import { useGLTF } from "@react-three/drei";
 
+const MODEL_PATH = `${import.meta.env.BASE_URL}models/skyline.glb`;
+
 export default function Skyline() {
-  const { scene } = useGLTF("/models/skyline.glb");
+  const { scene } = useGLTF(MODEL_PATH);
 
   scene.traverse((child) => {
     if (child.isMesh) {
@@ -34,5 +36,4 @@ export default function Skyline() {
   );
 }
 
-useGLTF.preload("/models/skyline.glb");
-
+useGLTF.preload(MODEL_PATH);

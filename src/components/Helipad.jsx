@@ -1,8 +1,10 @@
 
 import { useGLTF } from "@react-three/drei";
 
+const MODEL_PATH = `${import.meta.env.BASE_URL}models/helipad.glb`;
+
 export default function Helipad() {
-  const { scene } = useGLTF("/models/helipad.glb");
+  const { scene } = useGLTF(MODEL_PATH);
 
   scene.traverse((child) => {
     if (child.isMesh) {
@@ -33,5 +35,4 @@ export default function Helipad() {
   );
 }
 
-useGLTF.preload("/models/helipad.glb");
-
+useGLTF.preload(MODEL_PATH);

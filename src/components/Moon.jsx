@@ -1,10 +1,12 @@
 import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 
+const TEXTURE_PATH = `${import.meta.env.BASE_URL}textures/Moon.jpg`;
+
 export default function Moon() {
   const texture = useLoader(
     THREE.TextureLoader,
-    "/textures/Moon.jpg"
+    TEXTURE_PATH
   );
 
   return (
