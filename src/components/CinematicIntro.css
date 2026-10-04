@@ -1,0 +1,70 @@
+.cinematic-intro {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  background: #02030a;
+
+  pointer-events: none;
+
+  animation: introFadeOut 3.2s ease forwards;
+}
+
+.intro-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 300px;
+  height: 300px;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 150, 255, 0.12),
+    transparent 70%
+  );
+
+  filter: blur(40px);
+
+  animation: glowAppear 2.5s ease forwards;
+}
+
+@keyframes introFadeOut {
+
+  0% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+@keyframes glowAppear {
+
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+}

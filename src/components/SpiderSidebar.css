@@ -1,0 +1,467 @@
+/* =========================================
+   THREE LINE MENU
+========================================= */
+
+.spider-menu {
+  position: fixed;
+  top: 32px;
+  right: 38px;
+
+  width: 34px;
+  height: 26px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+  z-index: 100;
+}
+
+.spider-menu span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 0 8px rgba(150, 200, 255, 0.55);
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+}
+
+
+/* =========================================
+   MENU → X
+========================================= */
+
+.spider-menu.active span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.spider-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.spider-menu.active span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+
+
+/* =========================================
+   BACKDROP
+========================================= */
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+
+  z-index: 80;
+
+  background: rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.45s ease,
+    backdrop-filter 0.45s ease,
+    visibility 0.45s ease;
+
+  pointer-events: none;
+}
+
+.menu-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  pointer-events: auto;
+}
+
+
+/* =========================================
+   GLASS SIDEBAR
+========================================= */
+
+.spider-sidebar {
+  position: fixed;
+
+  top: 18px;
+  right: 18px;
+
+  width: 290px;
+  height: calc(100vh - 36px);
+
+  z-index: 90;
+
+  box-sizing: border-box;
+
+  padding: 55px 34px 35px;
+
+  display: flex;
+  flex-direction: column;
+
+  /* GLASS */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  backdrop-filter: blur(25px) saturate(130%);
+  -webkit-backdrop-filter: blur(25px) saturate(130%);
+
+  /* BORDER */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 18px;
+
+  /* SHADOW */
+  box-shadow:
+    -15px 0 50px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* CLOSED */
+  transform: translateX(calc(100% + 40px));
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    visibility 0.65s ease;
+
+  pointer-events: none;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* =========================================
+   OPEN SIDEBAR
+========================================= */
+
+.spider-sidebar.open {
+  transform: translateX(0);
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.sidebar-close {
+  position: absolute;
+
+  top: 24px;
+  right: 25px;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 28px;
+  font-weight: 200;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.sidebar-close:hover {
+  color: white;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================
+   SPIDER LOGO
+========================================= */
+
+.spider-logo {
+  font-family:
+    "Bank Gothic",
+    "Arial Narrow",
+    sans-serif;
+
+  font-size: 25px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: #f1d477;
+
+  text-shadow:
+    0 0 6px rgba(255, 210, 110, 0.75),
+    0 0 18px rgba(255, 170, 50, 0.3);
+
+  padding-bottom: 22px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.spider-navigation {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  margin-top: 30px;
+}
+
+
+/* IMPORTANT:
+   This removes the browser's
+   blue + underline link style.
+*/
+
+.spider-navigation a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 7px 4px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  letter-spacing: 0.5px;
+
+  border-radius: 8px;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* VISITED LINKS */
+.spider-navigation a:visited {
+  color: rgba(255, 255, 255, 0.88);
+
+  text-decoration: none;
+}
+
+
+/* HOVER */
+.spider-navigation a:hover {
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, 0.07);
+
+  transform:
+    translateX(5px);
+
+  text-decoration: none;
+}
+
+
+/* ACTIVE */
+.spider-navigation a:active {
+  color: #f1d477;
+
+  text-decoration: none;
+}
+
+
+/* =========================================
+   ICONS
+========================================= */
+
+.nav-icon {
+  width: 22px;
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  color: #e0bd5d;
+
+  font-size: 15px;
+
+  text-shadow:
+    0 0 8px rgba(255, 190, 70, 0.55);
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   ACCOUNT
+========================================= */
+
+.spider-account {
+  margin-top: auto;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+/* ACCOUNT TITLE */
+
+.account-title {
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  color:
+    rgba(170, 185, 205, 0.75);
+
+  margin-bottom: 4px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   PROFILE AVATAR
+========================================= */
+
+.profile-avatar {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  color: white;
+}
+
+
+/* RED PROFILE */
+
+.profile-avatar.red {
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #e94b4b,
+      #710808 65%,
+      #1b0000
+    );
+
+  box-shadow:
+    0 0 12px rgba(220, 40, 40, 0.45);
+}
+
+
+/* BLACK PROFILE */
+
+.profile-avatar.black {
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #46505d,
+      #090b10 70%
+    );
+
+  box-shadow:
+    0 0 12px rgba(100, 150, 220, 0.35);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .spider-sidebar {
+    top: 10px;
+    right: 10px;
+
+    width: 260px;
+
+    height: calc(100vh - 20px);
+
+    padding:
+      50px 25px 25px;
+  }
+
+  .spider-menu {
+    top: 25px;
+    right: 25px;
+
+    width: 30px;
+  }
+}
